@@ -13,9 +13,7 @@ for line in contracts_data:
 stats_list = []
 
 for row in stats_data[1:]:
-
     player_name = ' '.join(row.split(',')[:2])
-
     salary = contracts_dict.get(player_name, '0')
 
     row_and_salary = row.strip() + f',{salary}\n'
