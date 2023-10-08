@@ -1,51 +1,15 @@
-{% extends 'base.html' %}
-
-{% block content %}
-<h2>Player Records</h2>
-<table class="table table-striped table-hover table-bordered">
-    <thead class="table-dark">
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">First</th>
-        <th scope="col">Last</th>
-        <th scope="col">G</th>
-        <th scope="col">PPG</th>
-        <th scope="col">RPG</th>
-        <th scope="col">APG</th>
-        <th scope="col">FG%</th>
-        <th scope="col">F3%</th>
-        <th scope="col">FT%</th>
-      </tr>
-    </thead>
-    <tbody>
-{% if records %}
-    {% for record in records %}
-      <tr>
-        <td>{{ record.id }}</td>
-        <td>{{ record.first_name }}</td>
-        <td>{{ record.last_name }}</td>
-        <td>{{ record.games_played }}</td>
-        <td>{{ record.ppg }}</td>
-        <td>{{ record.rpg }}</td>
-        <td>{{ record.apg }}</td>
-        <td>{{ record.fg_pct }}</td>
-        <td>{{ record.fg3_pct }}</td>
-        <td>{{ record.ft_pct }}</td>
-      </tr>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>    
+    {% if records %}
+    {% for player in records %}
+        <div>{{ player }}</div>
     {% endfor %}
-{% endif %}
-</tbody>
-</table>
-
-<h5>Glossary</h5>
-    <ul style="list-style-type: none">
-        <li>G - total games played</li>
-        <li>PPG - points per game</li>
-        <li>RPG - rebounds per game</li>
-        <li>APG - assists per game</li>
-        <li>FG% - career field goal percentage</li>
-        <li>F3% - career 3-point field goal percentage</li>
-        <li>FT% - career free throw percentage</li>
-    </ul>
-
-{% endblock %}
+    {% endif %}
+</body>
+</html>
