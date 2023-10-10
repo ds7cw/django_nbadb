@@ -3,7 +3,7 @@ from .models import Player, MainPlayer
 
 # Create your views here.
 
-def players(request):
+def sample(request):
     records = Player.objects.all()
 
     return render(request, 'sample.html', {'records': records})
@@ -29,4 +29,17 @@ def createdb(request):
     
     records = MainPlayer.objects.all()
     context = {'records': records}
+    return render(request, 'players.html', context=context)
+
+
+def players_list(request, page_number):
+    rows_per_page = 30
+    end_idx = page_number * rows_per_page
+    start_idx = end_idx - rows_per_page
+    records = MainPlayer.objects.all()[start_idx:end_idx]
+    context = {
+        'records': records,
+        'page_number': page_number
+    }
+
     return render(request, 'players.html', context=context)
