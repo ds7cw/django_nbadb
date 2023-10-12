@@ -1,33 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>    
-    {% if records %}
-    {% for player in records %}
-        <div>{{ player }}</div>
-    {% endfor %}
-    {% endif %}
-    <a href="{% url 'players' page_number=1 %}">1</a>
-    <a href="{% url 'players' page_number=2 %}">2</a>
-    <a href="{% url 'players' page_number=3 %}">3</a>
-    <a href="{% url 'players' page_number=4 %}">4</a>
-    <a href="{% url 'players' page_number=5 %}">5</a>
-    <a href="{% url 'players' page_number=6 %}">6</a>
-    <a href="{% url 'players' page_number=7 %}">7</a>
-    <a href="{% url 'players' page_number=8 %}">8</a>
-    <a href="{% url 'players' page_number=9 %}">9</a>
-    <a href="{% url 'players' page_number=10 %}">10</a>
-    <a href="{% url 'players' page_number=11 %}">11</a>
-    <a href="{% url 'players' page_number=12 %}">12</a>
-    <a href="{% url 'players' page_number=13 %}">13</a>
-    <a href="{% url 'players' page_number=14 %}">14</a>
-    <a href="{% url 'players' page_number=15 %}">15</a>
-    <a href="{% url 'players' page_number=16 %}">16</a>
-    <a href="{% url 'players' page_number=17 %}">17</a>
-    <a href="{% url 'players' page_number=18 %}">18</a>
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block content %}
+    <br></br>   
+    <center>
+        {% if records %}
+        {% for player in records %}
+            <div>{{ player }}</div>
+        {% endfor %}
+        {% endif %}
+        <br></br>
+        <a href="{% url 'players' page_number=1 %}">1</a>
+        <a href="{% url 'players' page_number=2 %}">2</a>
+        <a href="{% url 'players' page_number=3 %}">3</a>
+        <a href="{% url 'players' page_number=4 %}">4</a>
+        <a href="{% url 'players' page_number=5 %}">5</a>
+        <a href="{% url 'players' page_number=6 %}">6</a>
+        <a href="{% url 'players' page_number=7 %}">7</a>
+        <a href="{% url 'players' page_number=8 %}">8</a>
+        <a href="{% url 'players' page_number=9 %}">9</a>
+        <a href="{% url 'players' page_number=10 %}">10</a>
+        <a href="{% url 'players' page_number=11 %}">11</a>
+        <a href="{% url 'players' page_number=12 %}">12</a>
+        <a href="{% url 'players' page_number=13 %}">13</a>
+        <a href="{% url 'players' page_number=14 %}">14</a>
+        <a href="{% url 'players' page_number=15 %}">15</a>
+        <a href="{% url 'players' page_number=16 %}">16</a>
+        <a href="{% url 'players' page_number=17 %}">17</a>
+        <a href="{% url 'players' page_number=18 %}">18</a>
+    </center>
+{% endblock %}

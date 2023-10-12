@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Player, MainPlayer
+from . import helper_functions
 
 # Create your views here.
 
@@ -29,13 +30,11 @@ def createdb(request):
     
     records = MainPlayer.objects.all()
     context = {'records': records}
-    return render(request, 'players.html', context=context)
+    return render(request, 'createdb.html', context=context)
 
 
 def players_list(request, page_number):
-    rows_per_page = 30
-    end_idx = page_number * rows_per_page
-    start_idx = end_idx - rows_per_page
+    start_idx, end_idx = helper_functions.table_breakdown(page_number, 30)
     records = MainPlayer.objects.all()[start_idx:end_idx]
     context = {
         'records': records,
@@ -43,3 +42,12 @@ def players_list(request, page_number):
     }
 
     return render(request, 'players.html', context=context)
+
+def players_table(request, page_number):
+    start_idx, end_idx = helper_functions.table_breakdown(page_number, 30)
+    records = MainPlayer.objects.all()[start_idx:end_idx]
+    context = {
+        'records': records,
+        'page_number': page_number}
+    
+    return render(request, 'players_table.html', context=context)
