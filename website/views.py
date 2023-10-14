@@ -51,3 +51,11 @@ def players_table(request, page_number):
         'page_number': page_number}
     
     return render(request, 'players_table.html', context=context)
+
+
+def player_details(request, player_id):
+    player_record = MainPlayer.objects.get(id=player_id)
+    context = {'player_record': player_record}
+
+    return render(request, 'player_details.html', context=context) 
+

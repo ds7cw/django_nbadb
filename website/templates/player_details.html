@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>{{ player_record.first_name }} {{ player_record.last_name }} {{ player_record.suffix }}</h1>
+    <div>Points Per Game: {{ player_record.ppg }}</div>    
+    <div>Assists Per Game: {{ player_record.apg }}</div>
+    <div>Rebounds Per Game: {{ player_record.rpg }}</div>
+    <div>Team: {{ player_record.team }}</div>
+    <div>Season 2023/ 2024 Salary: $ {{ player_record.salary }}</div>
+{% endblock %}
