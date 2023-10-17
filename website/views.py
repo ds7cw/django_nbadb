@@ -59,3 +59,15 @@ def player_details(request, player_id):
 
     return render(request, 'player_details.html', context=context) 
 
+
+def teams(request):
+    return render(request, 'teams.html')
+
+
+def teams_roster(request, team_name):
+    team_roster = MainPlayer.objects.filter(team=team_name.upper())
+    context = {
+        'team_roster': team_roster,
+        'team_name': team_name.upper()}
+
+    return render(request, 'teams_roster.html', context=context)
