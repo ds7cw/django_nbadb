@@ -37,5 +37,8 @@ class MainPlayer(models.Model):
     ppg = models.FloatField(default=0.0)
     salary = models.IntegerField(default=0.0)
 
+    def format_salary(self) -> str:
+        return f'{self.salary:,}'
+
     def __str__(self) -> str:
         return f'{self.first_name} {self.last_name} {self.suffix} | APG: {self.apg} | RPG: {self.rpg} | PPG:{self.ppg}'

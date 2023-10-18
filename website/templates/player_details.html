@@ -6,6 +6,7 @@
     <div>Points Per Game: {{ player_record.ppg }}</div>    
     <div>Assists Per Game: {{ player_record.apg }}</div>
     <div>Rebounds Per Game: {{ player_record.rpg }}</div>
-    <div>Team: {{ player_record.team }}</div>
-    <div>Season 2023/ 2024 Salary: $ {{ player_record.salary }}</div>
+    <div>Position: {{ player_record.pos }}</div>
+    <div>Team: <a href="{% url 'teams roster' team_name=player_record.team %}">{{ player_record.team }}</a></div>
+    <div>Season 2023/ 2024 Salary: $ {{ player_record.format_salary }}</div>
 {% endblock %}

@@ -35,7 +35,9 @@
                       <a href="{% url 'player details' player_id=record.id %}">{{ record.first_name }} {{ record.last_name }} {{ record.suffix }}</a>
                     </td>
                     <td>{{ record.pos }}</td>
-                    <td>{{ record.team }}</td>
+                    <td>
+                      <a href="{% url 'teams roster' team_name=record.team %}">{{ record.team }}</a>
+                    </td>
                     <td>{{ record.gp }}</td>
                     <td>{{ record.mpg }}</td>
                     <td>{{ record.fg_pct }}</td>
@@ -47,7 +49,7 @@
                     <td>{{ record.blkpg }}</td>
                     <td>{{ record.topg }}</td>
                     <td>{{ record.ppg }}</td>
-                    <td>{{ record.salary }}</td>
+                    <td>$ {{ record.format_salary }}</td>
                   </tr>
                 {% endfor %}
             {% endif %}
