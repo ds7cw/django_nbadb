@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <center>
+        {% if searched %}
+            <h1>You Searched For '{{ searched }}'</h1>
+                {% if records %}
+                    {% for record in records %}
+                        <h3><a href="{% url 'player details' player_id=record.id %}">{{record.first_name}} {{record.last_name}} {{record.suffix}}</a> - {{record.team}}</h3>
+                    {% endfor %}
+                {% endif %}
+        {% else %}
+            <h1>You Forgot to Type the Player's Name</h1>
+        {% endif %}
+    </center>
+{% endblock %}

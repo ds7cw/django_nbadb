@@ -71,3 +71,15 @@ def teams_roster(request, team_name):
         'team_name': team_name.upper()}
 
     return render(request, 'teams_roster.html', context=context)
+
+
+def search_players(request):
+    if request.method == 'POST':
+        searched = request.POST['searched']
+        first_name_filter = MainPlayer.objects.filter(first_name__contains=searched)
+        last_name_filter = MainPlayer.objects.filter(last_name__contains=searched)
+        records = set([player for record in [first_name_filter, last_name_filter] for player in record])
+
+        return render(request, 'search_players.html', {'searched': searched, 'records': records})
+    else:
+        return render(request, 'search_players.html')
