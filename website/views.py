@@ -35,7 +35,7 @@ def createdb(request):
 
 def players_list(request, page_number):
     start_idx, end_idx = helper_functions.table_breakdown(page_number, 30)
-    records = MainPlayer.objects.all()[start_idx:end_idx]
+    records = MainPlayer.objects.filter(id__range=[start_idx, end_idx])
     context = {
         'records': records,
         'page_number': page_number
@@ -45,7 +45,7 @@ def players_list(request, page_number):
 
 def players_table(request, page_number):
     start_idx, end_idx = helper_functions.table_breakdown(page_number, 30)
-    records = MainPlayer.objects.all()[start_idx:end_idx]
+    records = MainPlayer.objects.filter(id__range=[start_idx, end_idx])
     context = {
         'records': records,
         'page_number': page_number}
