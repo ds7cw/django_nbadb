@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.db.models import Q
 from .models import Player, MainPlayer
 from . import helper_functions
 
@@ -76,9 +77,8 @@ def teams_roster(request, team_name):
 def search_players(request):
     if request.method == 'POST':
         searched = request.POST['searched']
-        first_name_filter = MainPlayer.objects.filter(first_name__contains=searched)
-        last_name_filter = MainPlayer.objects.filter(last_name__contains=searched)
-        records = set([player for record in [first_name_filter, last_name_filter] for player in record])
+        query = Q(first_name__contains=searched) | Q(last_name__contains=searched)
+        records = MainPlayer.objects.filter(query)
 
         return render(request, 'search_players.html', {'searched': searched, 'records': records})
     else:
